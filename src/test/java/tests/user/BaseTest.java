@@ -6,9 +6,10 @@ import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import io.qameta.allure.selenide.AllureSelenide;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 
-import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selenide.*;
 
 public class BaseTest  {
 
@@ -24,9 +25,17 @@ public class BaseTest  {
 
 
         Configuration.browserSize = "1900x1080";
-        Configuration.pageLoadStrategy = "eager";
-        open("https://www.automationexercise.com/");
+        Configuration.pageLoadStrategy = "none";
+        Configuration.baseUrl ="https://www.automationexercise.com";
+        mainPage.openMainPage();
 
 
+
+    }
+
+    @AfterEach
+    void tearDown() {
+        closeWindow();
+        closeWebDriver();
     }
 }

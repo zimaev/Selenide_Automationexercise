@@ -1,34 +1,60 @@
 package POM;
 
-import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.*;
-import org.junit.jupiter.api.*;
+
 // page_url = https://www.automationexercise.com/login
 public class LoginPage {
-    SelenideElement email_address =$x("//input[@data-qa='login-email']");
-    SelenideElement password  =$x("//input[@type='password']");
+
+    //Форма авторизации
+    SelenideElement login_email_address =$x("//input[@data-qa='login-email']");
+    SelenideElement login_password =$x("//input[@type='password']");
     SelenideElement login_btn  =$x("//button[@data-qa='login-button']");
     SelenideElement loginErrorMsg  =$x("//*[@class='login-form']//p");
 
+    //Форма регистрации
+    SelenideElement singup_name =$x("//input[@data-qa='signup-name']");
+    SelenideElement signup_email_address  =$x("//input[@data-qa='signup-email']");
+    SelenideElement signup_btn  =$x("//button[@data-qa='signup-button']");
+    SelenideElement signupErrorMsg  =$x("//*[@class='signup-form']//p");
 
-    public void setEmail_address(String email) {
-        email_address.setValue(email);
+
+
+    public void setLogin_email_address(String email) {
+        login_email_address.setValue(email);
     }
 
-    public void setPassword(String pass) {
-        password.setValue(pass);
+    public void setLogin_password(String pass) {
+        login_password.setValue(pass);
     }
 
     public void clickLoginBtn(){
         login_btn.click();
     }
 
-    public void assertErrorMsg(){
+    public void assertLoginErrorMsg(){
         loginErrorMsg.shouldBe(visible);
         loginErrorMsg.shouldHave(text("Your email or password is incorrect!"));
     }
+
+    public void setName(String name) {
+        singup_name.setValue(name);
+    }
+
+    public void setSignupEmailAddress(String email){
+        signup_email_address.setValue(email);
+    }
+
+    public void clickSignupBtn(){
+        signup_btn.click();
+    }
+
+    public void assrtSingUpErrorMsg(){
+        signupErrorMsg.shouldBe(visible);
+        signupErrorMsg.shouldHave(text("Email Address already exist!"));
+    }
+
 }
