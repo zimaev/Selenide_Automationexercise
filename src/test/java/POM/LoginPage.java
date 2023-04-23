@@ -1,5 +1,6 @@
 package POM;
 
+import MODEL.User;
 import com.codeborne.selenide.SelenideElement;
 
 import static com.codeborne.selenide.Condition.text;
@@ -40,8 +41,8 @@ public class LoginPage {
         loginErrorMsg.shouldHave(text("Your email or password is incorrect!"));
     }
 
-    public void setName(String name) {
-        singup_name.setValue(name);
+    public void setName(String user) {
+        singup_name.setValue(user);
     }
 
     public void setSignupEmailAddress(String email){
