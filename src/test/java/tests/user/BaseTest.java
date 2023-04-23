@@ -24,6 +24,7 @@ public class BaseTest  {
 
 
         Configuration.browserSize = "1900x1080";
+        Configuration.pageLoadStrategy = "eager";
         open("https://www.automationexercise.com/");
 
 
