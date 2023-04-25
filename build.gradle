@@ -28,6 +28,7 @@ dependencies {
     testImplementation('org.assertj:assertj-core:3.23.1')
     testImplementation('org.slf4j:slf4j-simple:1.7.30')
     implementation 'com.github.javafaker:javafaker:1.0.2'
+    implementation 'io.rest-assured:rest-assured:5.3.0'
     testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
 }
@@ -42,6 +43,6 @@ allure {
 
     useJUnit5 {
         version = "${allureVersion}"
-        systemProperties(System.getProperties())
+
     }
 }

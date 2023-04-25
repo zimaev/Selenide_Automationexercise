@@ -9,7 +9,7 @@ import static com.codeborne.selenide.Selenide.open;
 
 // page_url = https://www.automationexercise.com/
 public class MainPage {
-
+    SelenideElement products = $x("//a[@href='/products']");
     SelenideElement login = $x("//a[@href='/login']");
     SelenideElement logOut = $x("//a[contains(@href, 'logout')]");
     SelenideElement loginnedAs = $x("//*[@id='header']//li[10]");
@@ -31,5 +31,7 @@ public class MainPage {
         logOut.click();
     }
 
-
+    public void clickProducts(){
+        products.click();
+    }
 }

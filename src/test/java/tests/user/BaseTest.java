@@ -1,10 +1,7 @@
 package tests.user;
 
 import MODEL.User;
-import POM.AccountCreated;
-import POM.LoginPage;
-import POM.MainPage;
-import POM.SignupPage;
+import POM.*;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import com.github.javafaker.Faker;
@@ -22,6 +19,7 @@ public class BaseTest  {
     LoginPage loginPage = new LoginPage();
     SignupPage signupPage = new SignupPage();
     AccountCreated accountCreated = new AccountCreated();
+    ProductsPage productsPage = new ProductsPage();
 
     @BeforeEach
     void setUp() {

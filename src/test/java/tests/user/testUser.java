@@ -7,6 +7,14 @@ import io.qameta.allure.SeverityLevel;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import com.codeborne.selenide.WebDriverRunner;
+import io.restassured.http.ContentType;
+import org.openqa.selenium.Cookie;
+import org.junit.jupiter.api.*;
+import java.util.Date;
+import static io.restassured.RestAssured.*;
+import static com.codeborne.selenide.Selenide.*;
+
 import static com.codeborne.selenide.Selenide.sleep;
 import static io.qameta.allure.Allure.step;
 
@@ -62,6 +70,41 @@ public class testUser extends BaseTest {
         step("Нажать кнопку LogOut", () -> mainPage.clicklLogOut());
 
     }
+
+
+    @DisplayName("Test Case 4: Logout User-REST")
+    @Severity(SeverityLevel.CRITICAL)
+    @Test
+    void testLogoutUserREST() {
+        step("Открыть страницу регистрации и авторизации", () -> mainPage.openMainPage());
+        String csrfToken = WebDriverRunner.getWebDriver().manage().getCookieNamed("csrftoken").getValue();
+        System.out.println(csrfToken);
+
+        String sessionId =
+                given().contentType(ContentType.MULTIPART).cookie("csrftoken", csrfToken)
+                        .header("referer","https://www.automationexercise.com/login")
+                        .multiPart("email", "admin@example.com")
+                        .multiPart("password", "admin")
+                        .multiPart("csrfmiddlewaretoken", csrfToken)
+                        .post("https://www.automationexercise.com/login")
+                        .then()
+                        .log().all()
+                        .extract().cookie("sessionid");
+
+        Date expDate = new Date();
+        expDate.setTime(expDate.getTime() + (10000 * 10000));
+        Cookie cookie = new Cookie("sessionid",sessionId,"automationexercise.com","/", expDate);
+        WebDriverRunner.getWebDriver().manage().addCookie(cookie);
+        refresh();
+        step("В футере отображается что авторизован", () -> mainPage.asserLogginedAs("admin"));
+        step("Нажать кнопку LogOut", () -> mainPage.clicklLogOut());
+
+
+
+    }
+
+
+
     @DisplayName("Test Case 5: Register User with existing email")
     @Severity(SeverityLevel.CRITICAL)
     @Test
