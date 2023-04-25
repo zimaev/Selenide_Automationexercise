@@ -15,7 +15,13 @@ public class MainPage {
     SelenideElement logIn = $x("//a[@href='/login']");
     SelenideElement logOut = $x("//a[@href='/logout']");
     SelenideElement contactUs = $x("//a[@href='/contact_us']");
+    SelenideElement testcCases = $x("//a[@href='/test_cases']");
     SelenideElement loginnedAs = $x("//*[@id='header']//li[10]");
+    SelenideElement subscribeSection = $x("//div[@class='single-widget']");
+    SelenideElement subscribeEmeilInput = subscribeSection.$x(".//*[@id='susbscribe_email']");
+    SelenideElement subscribeBtn = subscribeSection.$x(".//button[@id='subscribe']");
+    SelenideElement allertSuccessSubscribe = $x(".//div[@id='success-subscribe']");
+
 
 
     //Методы работы с элементами
@@ -44,4 +50,24 @@ public class MainPage {
         contactUs.click();
     }
 
+    public void openTestCasePage(){
+        testcCases.click();
+    }
+
+    public void assertSubscriptionSection(){
+        subscribeSection.shouldBe(visible);
+    }
+
+    public void setEmailInSubscribeInput(String email){
+        subscribeEmeilInput.setValue(email);
+    }
+
+    public void clickSubscribeBtn(){
+        subscribeBtn.click();
+    }
+
+    public void assertAllertSuccessSubscribe(){
+        allertSuccessSubscribe.shouldBe(visible);
+        allertSuccessSubscribe.shouldHave(text("You have been successfully subscribed!"));
+    }
 }

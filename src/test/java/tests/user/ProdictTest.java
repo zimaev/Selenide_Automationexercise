@@ -5,14 +5,14 @@ import io.qameta.allure.SeverityLevel;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static com.codeborne.selenide.Selenide.sleep;
 import static io.qameta.allure.Allure.step;
 
-public class prodictTest extends BaseTest {
+public class ProdictTest extends BaseTest {
 
     @DisplayName("Test Case 8: Verify All Products and product detail page")
     @Severity(SeverityLevel.NORMAL)
     @Test
+    //TODO Дописать кейс
     void testVerifyAllProductsAndProductDetailPage() {
         step("Открыть страницу c продуктами", () -> mainPage.clickProducts());
         step("Открыть страницу c продуктами", () -> productsPage.assertCountProdictCart());

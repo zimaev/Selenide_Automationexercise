@@ -20,6 +20,26 @@ public class CommonTest extends BaseTest{
         step("Загрузить сообщение", () -> contactUsPage.setInpunUploadFile("user.properties"));
         step("Загрузить сообщение", () -> contactUsPage.clickBtnSubmit());
         step("Проврека сообщения об успешной отправке сообщения", () -> contactUsPage.assertSuccsessMsg());
+    }
+
+    @DisplayName("Test Case 7: Verify Test Cases Page")
+    @Test
+    void testVerifyTestCasesPage() {
+        step("Открыть стартовую страницу", () -> mainPage.openMainPage());
+        step("Открыть страницу c тест-кейсами", () -> mainPage.openTestCasePage());
+        step("Проверка отображения сообщение, что это страница с тест кейсами", () -> testCasesPage.assertTitleTestCasePage());
+    }
+
+    @DisplayName("Test Case 10: Verify Subscription in home page")
+    @Test
+    void testVerifySubscriptionHomePage() {
+        step("Открыть стартовую страницу", () -> mainPage.openMainPage());
+        step("Проверка отображения секции подписки", () -> mainPage.assertSubscriptionSection());
+        step("Ввести email в поле ввода", () -> mainPage.setEmailInSubscribeInput("tan_haltermangb4@noticed.gn"));
+        step("Нажать на кнопку подписаться ", () -> mainPage.clickSubscribeBtn());
+        step("Проверека отображения сообщения о успещной подписке", () -> mainPage.assertAllertSuccessSubscribe());
 
     }
+
+
 }

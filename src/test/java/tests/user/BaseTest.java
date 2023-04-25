@@ -23,6 +23,8 @@ public class BaseTest  {
     AccountCreated accountCreated = new AccountCreated();
     ProductsPage productsPage = new ProductsPage();
     ContactUsPage contactUsPage = new ContactUsPage();
+    TestCasesPage testCasesPage = new TestCasesPage();
+
 
     @BeforeEach
     void setUp() throws IOException {
