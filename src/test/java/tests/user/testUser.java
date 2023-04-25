@@ -40,6 +40,19 @@ public class testUser extends BaseTest {
     @Test
     void testLoginUser() {
         step("Открыть страницу регистрации и авторизации", () -> mainPage.openSingupLoginPage());
+        step("Ввести email", () -> loginPage.setLogin_email_address(System.getProperty("email")));
+        step("Ввести пароль", () -> loginPage.setLogin_password(System.getProperty("password")));
+        step("Кажать кнопку Login", () -> loginPage.clickLoginBtn());
+        step("В футере отображается что авторизован", () -> mainPage.asserLogginedAs("admin"));
+
+    }
+
+
+    @DisplayName("Test Case 2: Login User with correct email and password -- PROP")
+    @Severity(SeverityLevel.CRITICAL)
+    @Test
+    void testLoginUserProp() {
+        step("Открыть страницу регистрации и авторизации", () -> mainPage.openSingupLoginPage());
         step("Ввести email", () -> loginPage.setLogin_email_address("admin@example.com"));
         step("Ввести пароль", () -> loginPage.setLogin_password("admin"));
         step("Кажать кнопку Login", () -> loginPage.clickLoginBtn());

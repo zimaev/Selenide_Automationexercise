@@ -17,9 +17,6 @@ public class prodictTest extends BaseTest {
         step("Открыть страницу c продуктами", () -> mainPage.clickProducts());
         step("Открыть страницу c продуктами", () -> productsPage.assertCountProdictCart());
         step("Открыть карточку продукта", () -> productsPage.selectProduct(2));
-        sleep(10000);
-
-
     }
 
 
@@ -31,6 +28,5 @@ public class prodictTest extends BaseTest {
         step("Ввести в строку поиска имя товара", () -> productsPage.setSearchProduct("Pure Cotton Neon Green Tshirt"));
         step("Начать на конопку поиска", () -> productsPage.clickSearchBtn());
         step("Проверка имени товара в поисковой выдаче", () -> productsPage.assertProductName("Pure Cotton Neon Green Tshirt"));
-
     }
 }

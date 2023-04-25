@@ -11,13 +11,14 @@ import static com.codeborne.selenide.Selenide.$x;
 
 public class ProductsPage {
 
+    //Селекторы
     SelenideElement searchProduct = $x("//input[@id='search_product']");
     SelenideElement searchBtn = $x("//button[@id='submit_search']");
     SelenideElement prodictNameInCard = $x("//*[@class='productinfo text-center']//p");
     ElementsCollection productCart = $$x("//*[@class='product-image-wrapper']");
 
 
-
+    //методы работы с элментами
     public void setSearchProduct(String productName){
         searchProduct.setValue(productName);
     }

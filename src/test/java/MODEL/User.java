@@ -17,6 +17,4 @@ public class User {
     public String zipCode;
     public String mobileNumber;
 
-
-
 }

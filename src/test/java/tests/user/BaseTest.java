@@ -9,6 +9,8 @@ import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 
+import java.io.IOException;
+
 import static com.codeborne.selenide.Selenide.*;
 
 public class BaseTest  {
@@ -20,9 +22,10 @@ public class BaseTest  {
     SignupPage signupPage = new SignupPage();
     AccountCreated accountCreated = new AccountCreated();
     ProductsPage productsPage = new ProductsPage();
+    ContactUsPage contactUsPage = new ContactUsPage();
 
     @BeforeEach
-    void setUp() {
+    void setUp() throws IOException {
         user.name = faker.funnyName().name();
         user.email = faker.internet().emailAddress();
         user.password = faker.internet().password();
@@ -36,6 +39,8 @@ public class BaseTest  {
         user.city = faker.address().city();
         user.zipCode = faker.address().zipCode();
         user.mobileNumber = faker.phoneNumber().phoneNumber();
+
+        System.getProperties().load(ClassLoader.getSystemResourceAsStream("user.properties"));
 
 
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide()

@@ -8,6 +8,8 @@ import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$x;
 
 public class SignupPage {
+
+    //Селекторы
     SelenideElement password = $x("//input[@id='password']");
     SelenideElement firstName = $x("//input[@id='first_name']");
     SelenideElement lastName = $x("//input[@id='last_name']");
@@ -24,7 +26,7 @@ public class SignupPage {
     SelenideElement mobile_number = $x("//input[@id='mobile_number']");
 
 
-
+    //Методы работы с элментами
     public void setUserData(User user){
         this.password.setValue(user.password);
         System.out.println(user.dateOfBirth);

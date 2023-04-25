@@ -9,17 +9,22 @@ import static com.codeborne.selenide.Selenide.open;
 
 // page_url = https://www.automationexercise.com/
 public class MainPage {
+
+    //Селекторы
     SelenideElement products = $x("//a[@href='/products']");
-    SelenideElement login = $x("//a[@href='/login']");
-    SelenideElement logOut = $x("//a[contains(@href, 'logout')]");
+    SelenideElement logIn = $x("//a[@href='/login']");
+    SelenideElement logOut = $x("//a[@href='/logout']");
+    SelenideElement contactUs = $x("//a[@href='/contact_us']");
     SelenideElement loginnedAs = $x("//*[@id='header']//li[10]");
 
+
+    //Методы работы с элементами
     public void openMainPage(){
         open("/");
     }
 
     public void openSingupLoginPage(){
-        login.click();
+        logIn.click();
     }
 
     public void asserLogginedAs(String username){
@@ -34,4 +39,9 @@ public class MainPage {
     public void clickProducts(){
         products.click();
     }
+
+    public void  clickContactUs(){
+        contactUs.click();
+    }
+
 }
