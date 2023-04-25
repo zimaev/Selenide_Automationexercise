@@ -41,5 +41,17 @@ public class CommonTest extends BaseTest{
 
     }
 
+    @DisplayName("Test Case 11: Verify Subscription in Cart page")
+    @Test
+    void testVerifySubscriptionCartPage() {
+        step("Открыть стартовую страницу", () -> mainPage.openMainPage());
+        step("Открыть страницу Shopping Cart", () -> mainPage.clickViewCart());
+        step("Ввести email в поле ввода", () -> mainPage.setEmailInSubscribeInput("tan_haltermangb4@noticed.gn"));
+        step("Нажать на кнопку подписаться ", () -> mainPage.clickSubscribeBtn());
+        step("Проверека отображения сообщения о успещной подписке", () -> mainPage.assertAllertSuccessSubscribe());
+
+
+    }
+
 
 }

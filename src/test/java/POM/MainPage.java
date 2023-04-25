@@ -16,6 +16,7 @@ public class MainPage {
     SelenideElement logOut = $x("//a[@href='/logout']");
     SelenideElement contactUs = $x("//a[@href='/contact_us']");
     SelenideElement testcCases = $x("//a[@href='/test_cases']");
+    SelenideElement viewCart = $x("//a[@href='/view_cart']");
     SelenideElement loginnedAs = $x("//*[@id='header']//li[10]");
     SelenideElement subscribeSection = $x("//div[@class='single-widget']");
     SelenideElement subscribeEmeilInput = subscribeSection.$x(".//*[@id='susbscribe_email']");
@@ -38,7 +39,7 @@ public class MainPage {
         loginnedAs.shouldHave(text(username));
     }
 
-    public void clicklLogOut(){
+    public void clickLogOut(){
         logOut.click();
     }
 
@@ -46,7 +47,7 @@ public class MainPage {
         products.click();
     }
 
-    public void  clickContactUs(){
+    public void clickContactUs(){
         contactUs.click();
     }
 
@@ -69,5 +70,9 @@ public class MainPage {
     public void assertAllertSuccessSubscribe(){
         allertSuccessSubscribe.shouldBe(visible);
         allertSuccessSubscribe.shouldHave(text("You have been successfully subscribed!"));
+    }
+
+    public void clickViewCart(){
+        viewCart.click();
     }
 }

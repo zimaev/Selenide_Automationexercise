@@ -1,7 +1,5 @@
 package tests.user;
 
-import MODEL.User;
-import io.qameta.allure.Epic;
 import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
 import org.junit.jupiter.api.DisplayName;
@@ -10,7 +8,7 @@ import org.junit.jupiter.api.Test;
 import com.codeborne.selenide.WebDriverRunner;
 import io.restassured.http.ContentType;
 import org.openqa.selenium.Cookie;
-import org.junit.jupiter.api.*;
+
 import java.util.Date;
 import static io.restassured.RestAssured.*;
 import static com.codeborne.selenide.Selenide.*;
@@ -80,7 +78,7 @@ public class testUser extends BaseTest {
         step("Ввести пароль", () -> loginPage.setLogin_password("admin"));
         step("Нажать кнопку Login", () -> loginPage.clickLoginBtn());
         step("В футере отображается что авторизован", () -> mainPage.asserLogginedAs("admin"));
-        step("Нажать кнопку LogOut", () -> mainPage.clicklLogOut());
+        step("Нажать кнопку LogOut", () -> mainPage.clickLogOut());
 
     }
 
@@ -110,7 +108,7 @@ public class testUser extends BaseTest {
         WebDriverRunner.getWebDriver().manage().addCookie(cookie);
         refresh();
         step("В футере отображается что авторизован", () -> mainPage.asserLogginedAs("admin"));
-        step("Нажать кнопку LogOut", () -> mainPage.clicklLogOut());
+        step("Нажать кнопку LogOut", () -> mainPage.clickLogOut());
 
 
 
